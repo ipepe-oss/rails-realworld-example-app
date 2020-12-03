@@ -23,7 +23,7 @@ gem 'acts-as-taggable-on', git: 'https://github.com/mbleigh/acts-as-taggable-on'
 gem 'devise'
 gem 'jwt', '~> 1.5.4'
 gem 'puma'
-gem 'rack-cors', '~> 0.4.0'
+gem 'rack-cors', '~> 1.0.5'
 
 group :development, :test do
   gem 'pry'
