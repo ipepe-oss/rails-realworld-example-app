@@ -1,12 +1,14 @@
-Rails:
-  Enabled: true
+require:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec
+  - rubocop-minitest
+  - rubocop-rake
 AllCops:
-  AutoCorrect: true
-  TargetRubyVersion: 2.4.0
-  Include:
-    - '**/Gemfile'
-    - '**/Rakefile'
-  Exclude:
-   - 'bin/*'
-   - 'db/seeds.rb'
-   - 'db/schema.rb'
+  DisabledByDefault: false
+  NewCops: true
+Style/Documentation:
+  Enabled: false
+Layout/DotPosition:
+  EnforcedStyle: trailing
+  Enabled: true
