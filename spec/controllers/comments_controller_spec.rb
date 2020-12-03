@@ -6,15 +6,11 @@ RSpec.describe CommentsController, type: :controller do
   end
 
   describe "POST create" do
-    let(:params) do
-      {
-        article_slug: 'abc'
-      }
-    end
-
     it "creates a comment" do
       request.headers['Authorization'] = "Bearer #{user.generate_jwt}"
-      post :create, params: params
+      post :create, params:       {
+        article_slug: 'abc'
+      }
 
       expect(response).to be_success
     end

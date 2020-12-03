@@ -3,10 +3,13 @@
 source 'https://rubygems.org'
 ruby '2.6.6'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.0'
+gem 'rails', '5.0.7.2'
+
+# revised gems
+gem 'dotenv-rails'
+
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.6'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -23,12 +26,10 @@ gem 'puma'
 gem 'rack-cors', '~> 0.4.0'
 
 group :development, :test do
-  gem 'listen'
   gem 'pry'
   gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
   gem 'rubocop', require: false
-  gem 'spring'
 end

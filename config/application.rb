@@ -11,7 +11,7 @@ Bundler.require(*Rails.groups)
 module Conduit
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.1
+    # config.load_defaults 5.1
     config.api_only = true
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -19,7 +19,7 @@ module Conduit
     # -- all .rb files in that directory are automatically loaded.
     config.middleware.insert_before 0, Rack::Cors, debug: true, logger: (-> { Rails.logger }) do
       allow do
-        origins Rails.application.secrets[:client_root_url]
+        origins ENV.fetch('CLIENT_ROOT_URL', '*')
 
         resource '/api/*',
                  headers: :any,
