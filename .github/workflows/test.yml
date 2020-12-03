@@ -18,7 +18,7 @@ jobs:
       - name: Install Rubocop
         run: bundle install
       - name: Check code
-        run: rubocop
+        run: bundle exec rubocop
   rspec-test:
     name: RSpec
     runs-on: ubuntu-18.04

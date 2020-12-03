@@ -3,7 +3,7 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
-  def index
+  def index # rubocop:disable Metrics/AbcSize
     @articles = Article.all.includes(:user)
 
     @articles = @articles.tagged_with(params[:tag]) if params[:tag].present?
@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
     @article = Article.find_by!(slug: params[:slug])
 
     if @article.user_id == @current_user_id
-      @article.update_attributes(article_params)
+      @article.update(article_params)
 
       render :show
     else

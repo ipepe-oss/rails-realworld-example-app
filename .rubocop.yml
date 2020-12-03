@@ -2,13 +2,15 @@ require:
   - rubocop-rails
   - rubocop-performance
   - rubocop-rspec
-  - rubocop-minitest
   - rubocop-rake
 AllCops:
   DisabledByDefault: false
-  NewCops: true
+  NewCops: enable
 Style/Documentation:
   Enabled: false
 Layout/DotPosition:
   EnforcedStyle: trailing
   Enabled: true
+Metrics/MethodLength:
+  Exclude:
+    - 'db/**/*.rb'
