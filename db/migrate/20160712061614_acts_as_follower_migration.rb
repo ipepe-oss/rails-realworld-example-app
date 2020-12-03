@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ActsAsFollowerMigration < ActiveRecord::Migration[5.1]
+class ActsAsFollowerMigration < ActiveRecord::Migration[5.0]
   def self.up
     create_table :follows, force: true do |t|
       t.references :followable, polymorphic: true, null: false
