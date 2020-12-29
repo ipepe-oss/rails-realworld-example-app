@@ -8,10 +8,11 @@ class CreateArticles < ActiveRecord::Migration[5.0]
       t.text :body
       t.string :description
       t.integer :favorites_count
-      t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end
     add_index :articles, :slug, unique: true
+
+    add_belongs_to :articles, :author, foreign_key: { to_table: :users }
   end
 end

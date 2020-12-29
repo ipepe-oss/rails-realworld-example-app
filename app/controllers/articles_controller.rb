@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index # rubocop:disable Metrics/AbcSize
     @articles = Article.all.includes(:user)
@@ -13,6 +13,8 @@ class ArticlesController < ApplicationController
     @articles_count = @articles.count
 
     @articles = @articles.order(created_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 20)
+
+    render json: @articles, serializer: ArticleSerializer
   end
 
   def feed

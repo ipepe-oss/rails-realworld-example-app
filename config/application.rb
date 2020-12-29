@@ -17,13 +17,13 @@ module Conduit
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.middleware.insert_before 0, Rack::Cors, debug: true, logger: (-> { Rails.logger }) do
+    config.middleware.insert_before 0, Rack::Cors, logger: (-> { Rails.logger }) do
       allow do
         origins ENV.fetch('CLIENT_ROOT_URL', '*')
 
         resource '/api/*',
                  headers: :any,
-                 methods: %i[get post delete put patch options head]
+                 methods: [:get, :post, :delete, :put, :patch, :options, :head]
       end
     end
   end

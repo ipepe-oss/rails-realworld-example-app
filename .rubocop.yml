@@ -6,11 +6,26 @@ require:
 AllCops:
   DisabledByDefault: false
   NewCops: enable
-Style/Documentation:
-  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
 Layout/DotPosition:
   EnforcedStyle: trailing
   Enabled: true
 Metrics/MethodLength:
   Exclude:
     - 'db/**/*.rb'
+Style/DoubleNegation:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/WordArray:
+  EnforcedStyle: brackets
+Style/SymbolArray:
+  EnforcedStyle: brackets
+Rails/FilePath:
+  EnforcedStyle: arguments
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/ExampleLength:
+  Enabled: false

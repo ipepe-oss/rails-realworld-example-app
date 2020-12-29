@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class Article < ApplicationRecord
-  belongs_to :user
+  belongs_to :author, class_name: 'User', optional: false
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  scope :authored_by, ->(username) { where(user: User.where(username: username)) }
-  scope :favorited_by, ->(username) { joins(:favorites).where(favorites: { user: User.where(username: username) }) }
+  scope :authored_by, ->(username) { where(author: User.where(username: username)) }
+  scope :favorited_by, ->(username) { joins(:favorites).where(favorites: { author: User.where(username: username) }) }
 
   acts_as_taggable
 

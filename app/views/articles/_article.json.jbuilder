@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
-json.call(article, :title, :slug, :body, :created_at, :updated_at, :description, :tag_list)
-json.author article.user, partial: 'profiles/profile', as: :user
-json.favorited signed_in? ? current_user.favorited?(article) : false
-json.favorites_count article.favorites_count || 0
+json.call(article, :title, :slug, :body, :description)
+json.createdAt(article.created_at)
+json.updatedAt(article.updated_at)
+json.tagList(article.tag_list)
+json.author(article.author, partial: 'profiles/profile', as: :user)
+json.favorited(!!current_user&.favorited?(article))
+json.favoritesCount(article.favorites_count || 0)
