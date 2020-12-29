@@ -23,6 +23,8 @@ Style/WordArray:
   EnforcedStyle: brackets
 Style/SymbolArray:
   EnforcedStyle: brackets
+Rails/WhereExists:
+  EnforcedStyle: where
 Rails/FilePath:
   EnforcedStyle: arguments
 RSpec/MultipleExpectations:

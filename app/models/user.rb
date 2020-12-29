@@ -19,9 +19,7 @@ class User < ApplicationRecord
                        allow_blank: false
 
   def generate_jwt
-    JWT.encode({ id: id,
-                 exp: 60.days.from_now.to_i },
-               Rails.application.secrets.secret_key_base)
+    JWT.encode({ id: id, exp: 60.days.from_now.to_i }, Rails.application.secrets.secret_key_base)
   end
 
   def favorite(article)
@@ -35,6 +33,6 @@ class User < ApplicationRecord
   end
 
   def favorited?(article)
-    favorites.find_by(article_id: article.id).present?
+    favorites.where(article: article).exists?
   end
 end

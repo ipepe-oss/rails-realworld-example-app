@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index # rubocop:disable Metrics/AbcSize
-    @articles = Article.all.includes(:user)
+    @articles = Article.all.includes(:author).order(created_at: :desc)
 
     @articles = @articles.tagged_with(params[:tag]) if params[:tag].present?
     @articles = @articles.authored_by(params[:author]) if params[:author].present?
@@ -12,13 +12,11 @@ class ArticlesController < ApplicationController
 
     @articles_count = @articles.count
 
-    @articles = @articles.order(created_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 20)
-
-    render json: @articles, serializer: ArticleSerializer
+    @articles = @articles.paginate(pagination_options)
   end
 
   def feed
-    @articles = Article.includes(:user).where(user: current_user.following_users)
+    @articles = Article.includes(:author).where(author: current_user.following_users)
 
     @articles_count = @articles.count
 
@@ -28,8 +26,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
-    @article.user = current_user
+    @article = Article.new(article_params.to_h.merge(author: current_user))
 
     if @article.save
       render :show
@@ -70,5 +67,14 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :body, :description, tag_list: [])
+  end
+
+  private
+
+  def pagination_options
+    {
+      page: params[:page] || 1,
+      per_page: params[:per_page] || 50
+    }
   end
 end

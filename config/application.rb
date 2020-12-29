@@ -19,7 +19,7 @@ module Conduit
     # -- all .rb files in that directory are automatically loaded.
     config.middleware.insert_before 0, Rack::Cors, logger: (-> { Rails.logger }) do
       allow do
-        origins ENV.fetch('CLIENT_ROOT_URL', '*')
+        origins '*'
 
         resource '/api/*',
                  headers: :any,
