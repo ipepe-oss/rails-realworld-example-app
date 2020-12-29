@@ -69,8 +69,6 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :body, :description, tag_list: [])
   end
 
-  private
-
   def pagination_options
     {
       page: params[:page] || 1,
