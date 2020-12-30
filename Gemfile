@@ -20,7 +20,6 @@ gem 'acts-as-taggable-on', git: 'https://github.com/mbleigh/acts-as-taggable-on'
 
 group :development, :test do
   gem 'faker'
-  gem 'sqlite3', '~> 1.3.6'
 end
 
 group :development do

@@ -14,7 +14,8 @@ RSpec.describe 'Articles' do
 
       expect(json_body['articles'].first.keys).to match_array(
         [
-          'slug', 'title', 'description', 'body', 'tagList', 'createdAt', 'updatedAt',
+          'slug', 'title', 'description', 'body',
+          'tagList', 'createdAt', 'updatedAt',
           'favorited', 'favoritesCount', 'author'
         ]
       )
