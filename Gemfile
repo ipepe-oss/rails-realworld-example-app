@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'jwt', '~> 1.5.4'
 gem 'pg'
 gem 'puma'
-gem 'rack-cors', '~> 0.4.0'
+gem 'rack-cors'
 gem 'will_paginate'
 
 # TODO: to revise if they are needed
