@@ -5,6 +5,7 @@ ruby '2.6.6'
 
 gem 'rails', '5.0.7.2'
 
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.0'

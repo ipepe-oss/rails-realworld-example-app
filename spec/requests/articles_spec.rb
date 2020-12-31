@@ -10,6 +10,7 @@ RSpec.describe 'Articles' do
 
       sign_in(user)
       get '/api/articles'
+      expect(json_body.keys).to eq(['articles', 'articles_count'])
       expect(json_body['articles'].size).to eq(3)
 
       expect(json_body['articles'].first.keys).to match_array(

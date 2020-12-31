@@ -12,7 +12,9 @@ class ArticlesController < ApplicationController
 
     @articles_count = @articles.count
 
-    @articles = @articles.paginate(pagination_options)
+    @articles = @articles.order(created_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 20)
+
+    render json: @articles, each_serializer: ArticleSerializer, meta: { articles_count: @articles_count }
   end
 
   def feed
